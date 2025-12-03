@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:drools="http://www.jboss.org/drools" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" namespace="https://kie.org/bpmn/_71A95CC6-2026-4807-845E-FEB85C61CC3F" id="_924C9622-BF32-440F-B1C4-6B348906DB0A" name="BPMN_47083D7F-155F-40F0-AD79-301D773EC61A">
+  <itemDefinition id="_D5EAE18D-7712-42C7-8284-6556154AD73C" structureRef="String" />
+  <process id="_6DE51679-1953-41BF-8103-2FF2BF3FB380">
+    <extensionElements />
+    <property id="_787E54A7-1C2C-4F16-ACFA-B388734FA2EF" name="myvariable" itemSubjectRef="_D5EAE18D-7712-42C7-8284-6556154AD73C" />
+    <property id="_85AEB7C2-7714-4287-B19E-27CDF09915DB" name="inputvar" itemSubjectRef="_D5EAE18D-7712-42C7-8284-6556154AD73C" />
+    <endEvent id="_66F2F920-EBF2-459B-B870-7E8DB2C97B3C">
+      <incoming>_D06DDB95-C09F-426A-857C-C7726FD9EA3B</incoming>
+    </endEvent>
+    <sequenceFlow id="_2E799975-9432-4A61-B356-827C00DECEDC" sourceRef="_8E5ECF05-E500-4205-9F88-4842C0D1870D" targetRef="_2C85E251-319F-4425-8005-C08C245B54B4" />
+    <sequenceFlow id="_D06DDB95-C09F-426A-857C-C7726FD9EA3B" sourceRef="_2C85E251-319F-4425-8005-C08C245B54B4" targetRef="_66F2F920-EBF2-459B-B870-7E8DB2C97B3C" />
+    <startEvent id="_8E5ECF05-E500-4205-9F88-4842C0D1870D">
+      <outgoing>_2E799975-9432-4A61-B356-827C00DECEDC</outgoing>
+    </startEvent>
+    <task id="_2C85E251-319F-4425-8005-C08C245B54B4" drools:taskName="Gen AI Task" name="Gen AI Task">
+      <incoming>_2E799975-9432-4A61-B356-827C00DECEDC</incoming>
+      <outgoing>_D06DDB95-C09F-426A-857C-C7726FD9EA3B</outgoing>
+      <ioSpecification id="_069A8105-311F-4C95-9483-24EBCF09C311">
+        <dataInput id="_B572175F-8240-410A-A382-6E6383C141A0" name="genAiProvider" drools:dtype="String" itemSubjectRef="_D5EAE18D-7712-42C7-8284-6556154AD73C" />
+        <dataInput id="_EE116BA3-6A3C-4D7C-BA3B-A74D7DEB6B60" name="genAiModel" drools:dtype="String" itemSubjectRef="_D5EAE18D-7712-42C7-8284-6556154AD73C" />
+        <dataInput id="_69A2FD60-F7AF-4ACA-BEB7-DCCACDBA38F1" name="genAiPrompt" drools:dtype="String" itemSubjectRef="_D5EAE18D-7712-42C7-8284-6556154AD73C" />
+        <dataInput id="_5881AB44-DBA1-48B9-8E87-1AE5A6277A25" name="ozellik" drools:dtype="String" itemSubjectRef="_D5EAE18D-7712-42C7-8284-6556154AD73C" />
+        <dataOutput name="genAiOutput" id="_1693C543-DAF4-482D-9730-4156CD5971FF" drools:dtype="String" itemSubjectRef="_D5EAE18D-7712-42C7-8284-6556154AD73C" />
+        <inputSet id="_2F7016E6-9993-4D74-83EF-775B7AD26464">
+          <dataInputRefs>_B572175F-8240-410A-A382-6E6383C141A0</dataInputRefs>
+          <dataInputRefs>_EE116BA3-6A3C-4D7C-BA3B-A74D7DEB6B60</dataInputRefs>
+          <dataInputRefs>_69A2FD60-F7AF-4ACA-BEB7-DCCACDBA38F1</dataInputRefs>
+          <dataInputRefs>_5881AB44-DBA1-48B9-8E87-1AE5A6277A25</dataInputRefs>
+        </inputSet>
+        <outputSet id="_C779356C-7104-4F4D-BC6E-4C26D9E0EA0A">
+          <dataOutputRefs>_1693C543-DAF4-482D-9730-4156CD5971FF</dataOutputRefs>
+        </outputSet>
+      </ioSpecification>
+      <dataInputAssociation id="_663689CF-7D5C-43D4-B0A4-60DFDE7950BC">
+        <targetRef>_B572175F-8240-410A-A382-6E6383C141A0</targetRef>
+        <assignment id="_D2770F88-4863-434C-BB9F-DA30D003F63F">
+          <from id="_E362DD5F-AED3-4D3E-9A35-E2060F337220" xsi:type="tFormalExpression">ollama</from>
+          <to id="_D5E280D1-77F3-434B-9F87-B9B58E8CEA60">_B572175F-8240-410A-A382-6E6383C141A0</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation id="_F416FE17-5C6F-41E6-AD66-41A888E838A7">
+        <targetRef>_EE116BA3-6A3C-4D7C-BA3B-A74D7DEB6B60</targetRef>
+        <assignment id="_34DAD2ED-1EE4-4F20-B58B-C149633ED455">
+          <from id="_2AE12095-F30C-4D6F-8795-5DB79C8F6757" xsi:type="tFormalExpression">llama3.2:latest</from>
+          <to id="_1A0F1E26-CFDB-4294-AC88-199FCB386214">_EE116BA3-6A3C-4D7C-BA3B-A74D7DEB6B60</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation id="_B673FD0E-6463-4F13-AF6E-9F5B354B2D2A">
+        <targetRef>_69A2FD60-F7AF-4ACA-BEB7-DCCACDBA38F1</targetRef>
+        <assignment id="_F91AFCA7-48B4-437D-8AD0-9E735FA1462A">
+          <from id="_5B43F4E4-47D7-47BD-AE3B-1CBB17DC3F85" xsi:type="tFormalExpression">Dünyanın en {{ozellik}} ülkesi hangisidir?</from>
+          <to id="_DD37AA06-48C4-4E5B-97EA-8C5EE5A0D2C9">_69A2FD60-F7AF-4ACA-BEB7-DCCACDBA38F1</to>
+        </assignment>
+      </dataInputAssociation>
+      <dataInputAssociation id="_CC74A386-8554-498D-9573-B546828FD874">
+        <sourceRef></sourceRef>
+        <targetRef>_5881AB44-DBA1-48B9-8E87-1AE5A6277A25</targetRef>
+      </dataInputAssociation>
+      <dataOutputAssociation id="_B8445791-A534-4EEB-82C9-986BFCCB1417">
+        <sourceRef>_1693C543-DAF4-482D-9730-4156CD5971FF</sourceRef>
+        <targetRef>_787E54A7-1C2C-4F16-ACFA-B388734FA2EF</targetRef>
+      </dataOutputAssociation>
+    </task>
+  </process>
+  <bpmndi:BPMNDiagram id="_E65B344E-B226-4819-ABCF-9D5235C86194">
+    <bpmndi:BPMNPlane id="_E2E58F23-1324-4957-A8E3-3B6B3F4C587D">
+      <bpmndi:BPMNShape id="_12152C71-2B61-4FC2-8991-53C8EA948252" bpmnElement="_8E5ECF05-E500-4205-9F88-4842C0D1870D">
+        <dc:Bounds x="120" y="60" width="60" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_6D878369-45A4-48FE-8139-34752BD59C2D" bpmnElement="_66F2F920-EBF2-459B-B870-7E8DB2C97B3C">
+        <dc:Bounds x="800" y="0" width="60" height="60" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_B1DE8938-1431-45C7-99C3-CAAC1F8A1657" bpmnElement="_2C85E251-319F-4425-8005-C08C245B54B4">
+        <dc:Bounds x="320" y="80" width="180" height="100" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="_7D89DFFB-1C2C-4FE5-9ADF-B0DCB55B963C" bpmnElement="_2E799975-9432-4A61-B356-827C00DECEDC" sourceElement="_12152C71-2B61-4FC2-8991-53C8EA948252" targetElement="_B1DE8938-1431-45C7-99C3-CAAC1F8A1657">
+        <di:waypoint x="150" y="90" />
+        <di:waypoint x="320" y="130" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="_3E623820-C2ED-4D93-8E70-451EA89FFB09" bpmnElement="_D06DDB95-C09F-426A-857C-C7726FD9EA3B" sourceElement="_B1DE8938-1431-45C7-99C3-CAAC1F8A1657" targetElement="_6D878369-45A4-48FE-8139-34752BD59C2D">
+        <di:waypoint x="410" y="130" />
+        <di:waypoint x="800" y="30" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
